@@ -1,4 +1,3 @@
-import { useState, useCallback, useEffect } from 'react';
 import { useAppState } from './shared/hooks/useAppState';
 import { useCart } from './features/cart/hooks/useCart';
 import { AdminPage } from './pages/admin';
