@@ -1,6 +1,6 @@
-import { useCart } from "../features/cart/hooks/useCart";
-import { useCoupon } from "../features/coupon/hooks/useCoupon";
-import { useProducts } from "../features/products/hooks/useProducts";
+import { useCart } from "./hooks/useCart";
+import { useCoupon } from "./hooks/useCoupon";
+import { useProducts } from "./hooks/useProducts";
 import { useAppState } from "./hooks/useAppState";
 import { useNotification } from "./hooks/useNotification";
 

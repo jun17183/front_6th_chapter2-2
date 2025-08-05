@@ -1,4 +1,4 @@
-import { CartActions, CouponActions } from "../../../../shared/types";
+import { CartActions, CouponActions } from "../../../shared/types";
 
 export const CouponSelectBox = ({
   couponActions,

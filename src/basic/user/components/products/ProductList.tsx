@@ -1,5 +1,5 @@
-import { AppState, CartActions, ProductsActions, SOLD_OUT } from "../../../../shared/types";
-import { formatUserPrice, getRemainingStock } from "../../../../shared/utils";
+import { AppState, CartActions, ProductsActions, SOLD_OUT } from "../../../shared/types";
+import { formatUserPrice, getRemainingStock } from "../../../shared/utils";
 import { ProductItem } from "./ProductItem";
 
 export const ProductList = ({

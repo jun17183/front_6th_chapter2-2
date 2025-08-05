@@ -1,7 +1,7 @@
-import { useAppState } from "../../../shared/hooks/useAppState";
-import { useNotification } from "../../../shared/hooks/useNotification";
-import { CartItem, Coupon, Product } from "../../../shared/types";
-import { getRemainingStock } from "../../../shared/utils";
+import { useAppState } from "./useAppState";
+import { useNotification } from "./useNotification";
+import { CartItem, Coupon, Product } from "../types";
+import { getRemainingStock } from "../utils";
 
 export const useCart = (
   appState: ReturnType<typeof useAppState>, 

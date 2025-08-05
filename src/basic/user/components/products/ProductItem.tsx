@@ -1,5 +1,5 @@
-import { CartActions, Product } from "../../../../shared/types";
-import { getRemainingStock } from "../../../../shared/utils";
+import { CartActions, Product } from "../../../shared/types";
+import { getRemainingStock } from "../../../shared/utils";
 
 export const ProductItem = ({ 
   product,

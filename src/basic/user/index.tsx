@@ -1,8 +1,8 @@
-import { CartList } from "../../features/cart/components/user/CartList";
-import { CouponSelectBox } from "../../features/coupon/components/user/CouponSelectBox";
-import { PaymentInfoBox } from "../../features/payment/components/PaymentInfoBox";
-import { ProductList } from "../../features/products/components/user/ProductList";
-import { CouponActions, CartActions, NotificationActions, ProductsActions, AppState } from "../../shared/types";
+import { CartList } from "./components/cart/CartList";
+import { CouponSelectBox } from "./components/coupon/CouponSelectBox";
+import { PaymentInfoBox } from "./components/payment/PaymentInfoBox";
+import { ProductList } from "./components/products/ProductList";
+import { CouponActions, CartActions, NotificationActions, ProductsActions, AppState } from "../shared/types";
 
 export const UserPage = ({
   appState,

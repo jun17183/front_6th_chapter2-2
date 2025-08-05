@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ActiveTab, ProductsActions, CouponActions, NotificationActions, ACTIVE_TAB_PRODUCTS, ACTIVE_TAB_COUPONS } from "../../shared/types";
-import { AdminProducts } from "./AdminProducts";
-import { AdminCoupon } from "./AdminCoupon";
+import { ActiveTab, ProductsActions, CouponActions, NotificationActions, ACTIVE_TAB_PRODUCTS, ACTIVE_TAB_COUPONS } from "../shared/types";
+import { AdminProducts } from "./pages/AdminProducts";
+import { AdminCoupon } from "./pages/AdminCoupon";
 
 export const AdminPage = ({
   productsActions,

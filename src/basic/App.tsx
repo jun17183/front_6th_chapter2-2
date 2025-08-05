@@ -1,12 +1,12 @@
 import { useAppState } from './shared/hooks/useAppState';
-import { useCart } from './features/cart/hooks/useCart';
-import { AdminPage } from './pages/admin';
-import { UserPage } from './pages/user';
+import { useCart } from './shared/hooks/useCart';
+import { AdminPage } from './admin';
+import { UserPage } from './user';
 import { Notifications } from './shared/components/Notifications';
 import { useNotification } from './shared/hooks/useNotification';
 import { Header } from './shared/components/Header';
-import { useProducts } from './features/products/hooks/useProducts';
-import { useCoupon } from './features/coupon/hooks/useCoupon';
+import { useProducts } from './shared/hooks/useProducts';
+import { useCoupon } from './shared/hooks/useCoupon';
 
 const App = () => {
   const appState = useAppState();

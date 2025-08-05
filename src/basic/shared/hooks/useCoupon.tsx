@@ -1,6 +1,6 @@
-import { useAppState } from "../../../shared/hooks/useAppState";
-import { useNotification } from "../../../shared/hooks/useNotification";
-import { Coupon } from "../../../shared/types";
+import { useAppState } from "./useAppState";
+import { useNotification } from "./useNotification";
+import { Coupon } from "../types";
 
 export const useCoupon = (
   appState: ReturnType<typeof useAppState>, 

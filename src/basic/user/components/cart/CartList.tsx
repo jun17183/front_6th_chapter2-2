@@ -1,4 +1,4 @@
-import { CartActions } from "../../../../shared/types";
+import { CartActions } from "../../../shared/types";
 import { CartItem } from "./CartItem";
 
 export const CartList = ({
