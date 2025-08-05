@@ -1,4 +1,4 @@
-import { Coupon, Product } from "./types";
+import { Coupon, DISCOUNT_TYPE_AMOUNT, Product } from "./types";
 
 export const initialProductForm: Product = {
   id: '',
@@ -7,6 +7,13 @@ export const initialProductForm: Product = {
   stock: 0,
   description: '',
   discounts: []
+}
+
+export const initialCouponForm: Coupon = {
+  name: '',
+  code: '',
+  discountType: DISCOUNT_TYPE_AMOUNT,
+  discountValue: 0
 }
 
 export const initialProducts: Product[] = [
