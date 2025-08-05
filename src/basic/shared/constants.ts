@@ -1,5 +1,14 @@
 import { Coupon, Product } from "./types";
 
+export const initialProductForm: Product = {
+  id: '',
+  name: '',
+  price: 0,
+  stock: 0,
+  description: '',
+  discounts: []
+}
+
 export const initialProducts: Product[] = [
   {
     id: 'p1',
