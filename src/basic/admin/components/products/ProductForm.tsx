@@ -18,6 +18,7 @@ export const ProductForm = ({
   const { addProduct, updateProduct } = productsActions;
   const { addNotification } = notificationActions;
 
+  // 상품 제출
   const handleProductSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (productForm.id) {
@@ -35,6 +36,7 @@ export const ProductForm = ({
     setProductForm({ ...productForm, [name]: value });
   };
 
+  // #region 상품 정보 변경
   // 가격 변경
   const changePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -105,6 +107,7 @@ export const ProductForm = ({
     newDiscounts[index].quantity = quantity;
     setProductForm({ ...productForm, discounts: newDiscounts });
   };
+  // #endregion
 
   return (
     <div className="p-6 border-t border-gray-200 bg-gray-50">
@@ -117,6 +120,7 @@ export const ProductForm = ({
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">상품명</label>
             <input
+              name="name"
               type="text"
               value={productForm.name}
               onChange={handleProductChange}
@@ -129,6 +133,7 @@ export const ProductForm = ({
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">설명</label>
             <input
+              name="description"
               type="text"
               value={productForm.description}
               onChange={handleProductChange}
@@ -140,6 +145,7 @@ export const ProductForm = ({
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">가격</label>
             <input
+              name="price"
               type="text"
               value={productForm.price === 0 ? '' : productForm.price}
               onChange={changePrice}
@@ -154,6 +160,7 @@ export const ProductForm = ({
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">재고</label>
             <input
+              name="stock"
               type="text"
               value={productForm.stock === 0 ? '' : productForm.stock}
               onChange={changeStock}
