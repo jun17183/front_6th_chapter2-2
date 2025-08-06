@@ -1,13 +1,20 @@
-
 import { AdminPage } from './admin';
 import { UserPage } from './user';
 import { Notifications } from './shared/components/Notifications';
 import { Header } from './shared/components/Header';
-import { useAtom } from 'jotai';
+import { Provider, useAtomValue } from 'jotai';
 import { isAdminAtom } from './store/atoms/appAtom';
 
 const App = () => {
-  const [isAdmin] = useAtom(isAdminAtom);
+  return (
+    <Provider>
+      <AppContent />
+    </Provider>
+  );
+};
+
+const AppContent = () => {
+  const isAdmin = useAtomValue(isAdminAtom);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -23,6 +30,6 @@ const App = () => {
       </main>
     </div>
   );
-};
+}
 
 export default App;
