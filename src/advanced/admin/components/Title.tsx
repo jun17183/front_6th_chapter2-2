@@ -1,6 +1,6 @@
 import { ACTIVE_TAB_COUPONS, ACTIVE_TAB_PRODUCTS, ActiveTab } from "../../shared/types";
 
-export const Header = ({
+export const Title = ({
   activeTab,
   setActiveTab
 }: {

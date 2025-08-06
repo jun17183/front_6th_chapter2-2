@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ActiveTab, ACTIVE_TAB_PRODUCTS } from "../shared/types";
-import { Header } from "./components/Header";
+import { Title } from "./components/Title";
 import { AdminProducts } from "./pages/AdminProducts";
 import { AdminCoupon } from "./pages/AdminCoupon";
 
@@ -9,7 +9,7 @@ export const AdminPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Title activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {activeTab === ACTIVE_TAB_PRODUCTS ? <AdminProducts /> : <AdminCoupon />}
     </div>
