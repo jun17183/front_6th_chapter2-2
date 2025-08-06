@@ -1,6 +1,7 @@
-import { atomWithReducer } from "jotai/utils";
+import { atomWithStorage } from "jotai/utils";
 import { ADD_PRODUCT, DELETE_PRODUCT, initialProducts, UPDATE_PRODUCT } from "../../shared/constants";
 import { Product } from "../../shared/types";
+import { atom } from "jotai";
 
 type ProductAction = 
   | { type: typeof ADD_PRODUCT;     payload: { product: Omit<Product, 'id'> } }
@@ -27,4 +28,12 @@ const productReducer = (state: Product[], action: ProductAction) => {
   }
 }
 
-export const productsAtom = atomWithReducer<Product[], ProductAction>(initialProducts, productReducer);
+const productsStorageAtom = atomWithStorage<Product[]>('products', initialProducts);
+
+export const productsAtom = atom(
+  (get) => get(productsStorageAtom),
+  (get, set, action: ProductAction) => {
+    const newState = productReducer(get(productsStorageAtom), action);
+    set(productsStorageAtom, newState);
+  }
+);
