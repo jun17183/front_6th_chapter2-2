@@ -1,6 +1,5 @@
 import { useProducts } from '../../../shared/hooks/useProducts';
-import { Product, SOLD_OUT } from '../../../shared/types';
-import { formatAdminPrice, getRemainingStock } from '../../../shared/utils';
+import { Product } from '../../../shared/types';
 import { ProductItem } from './ProductItem';
 
 export const ProductList = ({
@@ -8,14 +7,7 @@ export const ProductList = ({
 }: {
   startEditProduct: (product: Product) => void;
 }) => {
-  const { products, getProduct, deleteProduct } = useProducts();
-
-  const formatPrice = (price: number, productId?: string): string => {
-    const product = productId ? getProduct(productId) : undefined;
-    return product && getRemainingStock(product.stock) <= 0
-      ? SOLD_OUT
-      : formatAdminPrice(price);
-  };
+  const { products, deleteProduct } = useProducts();
 
   return (
     <div className="overflow-x-auto">
@@ -44,7 +36,6 @@ export const ProductList = ({
             <ProductItem
               key={product.id}
               product={product}
-              formatPrice={formatPrice}
               startEditProduct={startEditProduct}
               deleteProduct={deleteProduct}
             />

@@ -1,13 +1,12 @@
 import { Product } from '../../../shared/types';
+import { formatAdminPrice } from '../../../shared/utils';
 
 export const ProductItem = ({
   product,
-  formatPrice,
   startEditProduct,
   deleteProduct,
 }: {
   product: Product;
-  formatPrice: (price: number, productId?: string) => string;
   startEditProduct: (product: Product) => void;
   deleteProduct: (productId: string) => void;
 }) => {
@@ -17,7 +16,7 @@ export const ProductItem = ({
         {product.name}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        {formatPrice(product.price, product.id)}
+        {formatAdminPrice(product)}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         <span

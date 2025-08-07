@@ -1,14 +1,12 @@
 import { CartActions, Product } from '../../../shared/types';
-import { getRemainingStock } from '../../../shared/utils';
+import { formatUserPrice, getRemainingStock } from '../../../shared/utils';
 
 export const ProductItem = ({
   product,
   cartActions,
-  formatPrice,
 }: {
   product: Product;
   cartActions: CartActions;
-  formatPrice: (price: number, productId?: string) => string;
 }) => {
   const { getCartItem, addToCart } = cartActions;
   const remainingStock = getRemainingStock(
@@ -62,7 +60,7 @@ export const ProductItem = ({
         {/* 가격 정보 */}
         <div className="mb-3">
           <p className="text-lg font-bold text-gray-900">
-            {formatPrice(product.price, product.id)}
+            {formatUserPrice(product)}
           </p>
           {product.discounts.length > 0 && (
             <p className="text-xs text-gray-500">

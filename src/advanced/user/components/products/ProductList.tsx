@@ -1,12 +1,10 @@
 import { useProducts } from '../../../shared/hooks/useProducts';
-import { SOLD_OUT } from '../../../shared/types';
-import { formatUserPrice, getRemainingStock } from '../../../shared/utils';
 import { useSearch } from '../../../shared/hooks/useSearch';
 import { ProductItem } from './ProductItem';
 
 export const ProductList = () => {
   const { debouncedSearchTerm } = useSearch();
-  const { products, getProduct } = useProducts();
+  const { products } = useProducts();
 
   const filteredProducts = debouncedSearchTerm
     ? products.filter(
@@ -20,13 +18,6 @@ export const ProductList = () => {
               .includes(debouncedSearchTerm.toLowerCase()))
       )
     : products;
-
-  const formatPrice = (price: number, productId?: string): string => {
-    const product = productId ? getProduct(productId) : undefined;
-    return product && getRemainingStock(product.stock) <= 0
-      ? SOLD_OUT
-      : formatUserPrice(price);
-  };
 
   return (
     <section>
@@ -46,7 +37,6 @@ export const ProductList = () => {
             <ProductItem
               key={product.id}
               product={product}
-              formatPrice={formatPrice}
             />
           ))}
         </div>

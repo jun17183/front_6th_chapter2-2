@@ -1,5 +1,4 @@
-import { Product, ProductsActions, SOLD_OUT } from '../../../shared/types';
-import { formatAdminPrice, getRemainingStock } from '../../../shared/utils';
+import { Product, ProductsActions } from '../../../shared/types';
 import { ProductItem } from './ProductItem';
 
 export const ProductList = ({
@@ -9,15 +8,8 @@ export const ProductList = ({
   productsActions: ProductsActions;
   startEditProduct: (product: Product) => void;
 }) => {
-  const { products, getProduct, deleteProduct } = productsActions;
-
-  const formatPrice = (price: number, productId?: string): string => {
-    const product = productId ? getProduct(productId) : undefined;
-    return product && getRemainingStock(product.stock) <= 0
-      ? SOLD_OUT
-      : formatAdminPrice(price);
-  };
-
+  const { products, deleteProduct } = productsActions;
+  
   return (
     <div className="overflow-x-auto">
       <table className="w-full">
@@ -45,7 +37,6 @@ export const ProductList = ({
             <ProductItem
               key={product.id}
               product={product}
-              formatPrice={formatPrice}
               startEditProduct={startEditProduct}
               deleteProduct={deleteProduct}
             />

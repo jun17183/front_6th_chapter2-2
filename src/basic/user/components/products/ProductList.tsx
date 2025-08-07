@@ -1,10 +1,4 @@
-import {
-  AppState,
-  CartActions,
-  ProductsActions,
-  SOLD_OUT,
-} from '../../../shared/types';
-import { formatUserPrice, getRemainingStock } from '../../../shared/utils';
+import { AppState, CartActions, ProductsActions } from '../../../shared/types';
 import { ProductItem } from './ProductItem';
 
 export const ProductList = ({
@@ -17,7 +11,7 @@ export const ProductList = ({
   cartActions: CartActions;
 }) => {
   const { debouncedSearchTerm } = appState;
-  const { products, getProduct } = productsActions;
+  const { products } = productsActions;
 
   const filteredProducts = debouncedSearchTerm
     ? products.filter(
@@ -31,13 +25,6 @@ export const ProductList = ({
               .includes(debouncedSearchTerm.toLowerCase()))
       )
     : products;
-
-  const formatPrice = (price: number, productId?: string): string => {
-    const product = productId ? getProduct(productId) : undefined;
-    return product && getRemainingStock(product.stock) <= 0
-      ? SOLD_OUT
-      : formatUserPrice(price);
-  };
 
   return (
     <section>
@@ -58,7 +45,6 @@ export const ProductList = ({
               key={product.id}
               product={product}
               cartActions={cartActions}
-              formatPrice={formatPrice}
             />
           ))}
         </div>
