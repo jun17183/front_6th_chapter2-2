@@ -1,6 +1,7 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
+  // @ts-ignore
   test: {
     globals: true,
     environment: 'jsdom',
@@ -12,4 +13,4 @@ export default defineConfig({
       input: 'index.html'
     }
   }
-}) 
+})
