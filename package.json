@@ -16,7 +16,7 @@
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build",
     "test:basic": "vitest src/basic",
-    "test:advanced": "vitest src/advanced",
+    "test:advanced": "vitest src/advanced"
   },
   "dependencies": {
     "gh-pages": "^6.3.0",
