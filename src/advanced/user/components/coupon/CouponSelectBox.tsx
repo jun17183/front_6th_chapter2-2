@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import { useCoupon } from '../../../shared/hooks/useCoupon';
 import { useCart } from '../../../shared/hooks/useCart';
-import { Coupon } from '../../../shared/types';
 
 export const CouponSelectBox = () => {
-  const [selectedCoupon, setSelectedCoupon] = useState<Coupon | null>(null);
   const { coupons } = useCoupon();
-  const { applyCoupon } = useCart();
+  const { applyCoupon, selectedCoupon, setSelectedCoupon } = useCart();
 
   return (
     <section className="bg-white rounded-lg border border-gray-200 p-4">

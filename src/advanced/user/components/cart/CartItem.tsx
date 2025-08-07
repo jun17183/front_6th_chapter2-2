@@ -1,11 +1,12 @@
 import { MinusIcon, PlusIcon } from '../../../shared/components/icons';
 import { CartItem as CartItemType } from '../../../shared/types';
 import { useCart } from '../../../shared/hooks/useCart';
+import { calculateItemTotal } from '../../../shared/utils';
 
 export const CartItem = ({ cartItem }: { cartItem: CartItemType }) => {
-  const { calculateItemTotal, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity } = useCart();
 
-  const cartItemTotal = calculateItemTotal(cartItem);
+  const cartItemTotal = calculateItemTotal(cartItem, cart);
   const originalPrice = cartItem.product.price * cartItem.quantity;
   const hasDiscount = cartItemTotal < originalPrice;
   const discountRate = hasDiscount

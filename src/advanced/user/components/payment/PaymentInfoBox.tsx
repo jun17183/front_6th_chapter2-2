@@ -1,10 +1,11 @@
 import { useCart } from '../../../shared/hooks/useCart';
 import { useNotification } from '../../../shared/hooks/useNotification';
+import { calculateCartTotal } from '../../../shared/utils';
 
 export const PaymentInfoBox = () => {
-  const { calculateCartTotal, clearCart } = useCart();
+  const { cart, clearCart, selectedCoupon } = useCart();
   const { addNotification } = useNotification();
-  const { totalBeforeDiscount, totalAfterDiscount } = calculateCartTotal();
+  const { totalBeforeDiscount, totalAfterDiscount } = calculateCartTotal(cart, selectedCoupon || undefined);
 
   const completeOrder = () => {
     const orderNumber = `ORD-${Date.now()}`;

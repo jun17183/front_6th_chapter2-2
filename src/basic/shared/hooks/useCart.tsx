@@ -1,13 +1,13 @@
 import { useAppState } from './useAppState';
 import { useNotification } from './useNotification';
 import { CartItem, Coupon, Product } from '../types';
-import { getRemainingStock } from '../utils';
+import { calculateCartTotal, getRemainingStock } from '../utils';
 
 export const useCart = (
   appState: ReturnType<typeof useAppState>,
   notificationActions: ReturnType<typeof useNotification>
 ) => {
-  const { cart, setCart, products, selectedCoupon, setSelectedCoupon } =
+  const { cart, setCart, products, setSelectedCoupon } =
     appState;
   const { addNotification } = notificationActions;
 
@@ -87,7 +87,7 @@ export const useCart = (
 
   // 할인 쿠폰 적용
   const applyCoupon = (coupon: Coupon) => {
-    const { totalAfterDiscount } = calculateCartTotal();
+    const { totalAfterDiscount } = calculateCartTotal(cart, coupon);
 
     if (totalAfterDiscount < 10000 && coupon.discountType === 'percentage') {
       addNotification(
@@ -99,67 +99,6 @@ export const useCart = (
 
     setSelectedCoupon(coupon);
     addNotification('쿠폰이 적용되었습니다.', 'success');
-  };
-
-  // 최대 적용 가능한 할인 계산
-  const getMaxApplicableDiscount = (item: CartItem): number => {
-    const { discounts } = item.product;
-    const { quantity } = item;
-
-    const baseDiscount = discounts.reduce((maxDiscount, discount) => {
-      return quantity >= discount.quantity && discount.rate > maxDiscount
-        ? discount.rate
-        : maxDiscount;
-    }, 0);
-
-    const hasBulkPurchase = cart.some(cartItem => cartItem.quantity >= 10);
-    if (hasBulkPurchase) {
-      return Math.min(baseDiscount + 0.05, 0.5); // 대량 구매 시 추가 5% 할인
-    }
-
-    return baseDiscount;
-  };
-
-  // 아이템 총 가격 계산
-  const calculateItemTotal = (item: CartItem): number => {
-    const { price } = item.product;
-    const { quantity } = item;
-    const discount = getMaxApplicableDiscount(item);
-
-    return Math.round(price * quantity * (1 - discount));
-  };
-
-  // 카트 총 가격 계산
-  const calculateCartTotal = (): {
-    totalBeforeDiscount: number;
-    totalAfterDiscount: number;
-  } => {
-    let totalBeforeDiscount = 0;
-    let totalAfterDiscount = 0;
-
-    cart.forEach(item => {
-      const itemPrice = item.product.price * item.quantity;
-      totalBeforeDiscount += itemPrice;
-      totalAfterDiscount += calculateItemTotal(item);
-    });
-
-    if (selectedCoupon) {
-      if (selectedCoupon.discountType === 'amount') {
-        totalAfterDiscount = Math.max(
-          0,
-          totalAfterDiscount - selectedCoupon.discountValue
-        );
-      } else {
-        totalAfterDiscount = Math.round(
-          totalAfterDiscount * (1 - selectedCoupon.discountValue / 100)
-        );
-      }
-    }
-
-    return {
-      totalBeforeDiscount: Math.round(totalBeforeDiscount),
-      totalAfterDiscount: Math.round(totalAfterDiscount),
-    };
   };
 
   const clearCart = () => {
@@ -175,8 +114,6 @@ export const useCart = (
     removeFromCart,
     updateQuantity,
     applyCoupon,
-    calculateItemTotal,
-    calculateCartTotal,
     clearCart,
   };
 };

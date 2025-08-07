@@ -47,6 +47,7 @@ export const UserPage = ({
                 cartActions={cartActions}
               />
               <PaymentInfoBox
+                appState={appState}
                 cartActions={cartActions}
                 notificationActions={notificationActions}
               />

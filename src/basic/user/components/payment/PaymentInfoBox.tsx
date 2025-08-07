@@ -1,15 +1,19 @@
-import { CartActions, NotificationActions } from '../../../shared/types';
+import { AppState, CartActions, NotificationActions } from '../../../shared/types';
+import { calculateCartTotal } from '../../../shared/utils';
 
 export const PaymentInfoBox = ({
+  appState,
   cartActions,
   notificationActions,
 }: {
+  appState: AppState;
   cartActions: CartActions;
   notificationActions: NotificationActions;
 }) => {
-  const { calculateCartTotal, clearCart } = cartActions;
+  const { selectedCoupon } = appState;
+  const { cart, clearCart } = cartActions;
   const { addNotification } = notificationActions;
-  const { totalBeforeDiscount, totalAfterDiscount } = calculateCartTotal();
+  const { totalBeforeDiscount, totalAfterDiscount } = calculateCartTotal(cart, selectedCoupon || undefined);
 
   const completeOrder = () => {
     const orderNumber = `ORD-${Date.now()}`;
