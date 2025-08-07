@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://jun17183.github.io/front_6th_chapter2-2",
   "scripts": {
     "start:origin": "vite serve --open ./index.origin.html",
     "start:basic": "vite serve --open ./index.basic.html",

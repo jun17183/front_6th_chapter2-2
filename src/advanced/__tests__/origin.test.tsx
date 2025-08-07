@@ -8,6 +8,7 @@ describe('쇼핑몰 앱 통합 테스트', () => {
   beforeEach(() => {
     // localStorage 초기화
     localStorage.clear();
+    
     // console 경고 무시
     vi.spyOn(console, 'warn').mockImplementation(() => {});
     vi.spyOn(console, 'log').mockImplementation(() => {});
