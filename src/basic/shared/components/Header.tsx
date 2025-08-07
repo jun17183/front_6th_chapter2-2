@@ -1,9 +1,21 @@
-import { useEffect } from "react";
-import { AppState, CartActions } from "../types";
-import { CartIcon } from "./icons";
+import { useEffect } from 'react';
+import { AppState, CartActions } from '../types';
+import { CartIcon } from './icons';
 
-export const Header = ({ appState, cartActions }: { appState: AppState, cartActions: CartActions }) => {
-  const { isAdmin, setIsAdmin, searchTerm, setSearchTerm, setDebouncedSearchTerm } = appState;
+export const Header = ({
+  appState,
+  cartActions,
+}: {
+  appState: AppState;
+  cartActions: CartActions;
+}) => {
+  const {
+    isAdmin,
+    setIsAdmin,
+    searchTerm,
+    setSearchTerm,
+    setDebouncedSearchTerm,
+  } = appState;
   const { cart, totalItemCount } = cartActions;
 
   useEffect(() => {
@@ -26,7 +38,7 @@ export const Header = ({ appState, cartActions }: { appState: AppState, cartActi
                 <input
                   type="text"
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={e => setSearchTerm(e.target.value)}
                   placeholder="상품 검색..."
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                 />
@@ -39,8 +51,8 @@ export const Header = ({ appState, cartActions }: { appState: AppState, cartActi
             <button
               onClick={() => setIsAdmin(!isAdmin)}
               className={`px-3 py-1.5 text-sm rounded transition-colors ${
-                isAdmin 
-                  ? 'bg-gray-800 text-white' 
+                isAdmin
+                  ? 'bg-gray-800 text-white'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
@@ -63,4 +75,4 @@ export const Header = ({ appState, cartActions }: { appState: AppState, cartActi
       </div>
     </header>
   );
-}
+};

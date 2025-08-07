@@ -1,12 +1,17 @@
-import { atomWithStorage } from "jotai/utils";
-import { ADD_PRODUCT, DELETE_PRODUCT, initialProducts, UPDATE_PRODUCT } from "../../shared/constants";
-import { Product } from "../../shared/types";
-import { atom } from "jotai";
+import { atomWithStorage } from 'jotai/utils';
+import {
+  ADD_PRODUCT,
+  DELETE_PRODUCT,
+  initialProducts,
+  UPDATE_PRODUCT,
+} from '../../shared/constants';
+import { Product } from '../../shared/types';
+import { atom } from 'jotai';
 
-type ProductAction = 
-  | { type: typeof ADD_PRODUCT;     payload: { product: Omit<Product, 'id'> } }
-  | { type: typeof UPDATE_PRODUCT;  payload: { product: Partial<Product> } }
-  | { type: typeof DELETE_PRODUCT;  payload: { productId: string } }
+type ProductAction =
+  | { type: typeof ADD_PRODUCT; payload: { product: Omit<Product, 'id'> } }
+  | { type: typeof UPDATE_PRODUCT; payload: { product: Partial<Product> } }
+  | { type: typeof DELETE_PRODUCT; payload: { productId: string } };
 
 const productReducer = (state: Product[], action: ProductAction) => {
   switch (action.type) {
@@ -17,7 +22,11 @@ const productReducer = (state: Product[], action: ProductAction) => {
 
     // 상품 수정
     case UPDATE_PRODUCT:
-      return state.map(product => product.id === action.payload.product.id ? { ...product, ...action.payload.product } : product);
+      return state.map(product =>
+        product.id === action.payload.product.id
+          ? { ...product, ...action.payload.product }
+          : product
+      );
 
     // 상품 삭제
     case DELETE_PRODUCT:
@@ -26,12 +35,15 @@ const productReducer = (state: Product[], action: ProductAction) => {
     default:
       return state;
   }
-}
+};
 
-const productsStorageAtom = atomWithStorage<Product[]>('products', initialProducts);
+const productsStorageAtom = atomWithStorage<Product[]>(
+  'products',
+  initialProducts
+);
 
 export const productsAtom = atom(
-  (get) => get(productsStorageAtom),
+  get => get(productsStorageAtom),
   (get, set, action: ProductAction) => {
     const newState = productReducer(get(productsStorageAtom), action);
     set(productsStorageAtom, newState);

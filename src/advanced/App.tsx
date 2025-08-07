@@ -30,6 +30,6 @@ const AppContent = () => {
       </main>
     </div>
   );
-}
+};
 
 export default App;

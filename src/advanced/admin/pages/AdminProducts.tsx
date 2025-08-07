@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Product } from "../../shared/types";
-import { ProductList } from "../components/products/ProductList";
-import { ProductForm } from "../components/products/ProductForm";
-import { initialProductForm } from "../../shared/constants";
+import { useState } from 'react';
+import { Product } from '../../shared/types';
+import { ProductList } from '../components/products/ProductList';
+import { ProductForm } from '../components/products/ProductForm';
+import { initialProductForm } from '../../shared/constants';
 
 export const AdminProducts = () => {
   const [showProductForm, setShowProductForm] = useState(false);
@@ -28,14 +28,14 @@ export const AdminProducts = () => {
       </div>
 
       <ProductList startEditProduct={startEditProduct} />
-      
+
       {showProductForm && (
-        <ProductForm 
-          setShowProductForm={setShowProductForm} 
+        <ProductForm
+          setShowProductForm={setShowProductForm}
           productForm={productForm}
           setProductForm={setProductForm}
         />
       )}
     </section>
-  )
-}
+  );
+};

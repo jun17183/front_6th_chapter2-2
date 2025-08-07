@@ -1,6 +1,6 @@
-import { BagIcon } from "../../../shared/components/icons";
-import { useCart } from "../../../shared/hooks/useCart";
-import { CartItem } from "./CartItem";
+import { BagIcon } from '../../../shared/components/icons';
+import { useCart } from '../../../shared/hooks/useCart';
+import { CartItem } from './CartItem';
 
 export const CartList = () => {
   const { cart } = useCart();
@@ -8,10 +8,7 @@ export const CartList = () => {
   return (
     <section className="bg-white rounded-lg border border-gray-200 p-4">
       <h2 className="text-lg font-semibold mb-4 flex items-center">
-        <BagIcon
-          className="w-5 h-5 mr-2"
-          strokeWidth={1}
-        />
+        <BagIcon className="w-5 h-5 mr-2" strokeWidth={1} />
         장바구니
       </h2>
       {cart.length === 0 ? (
@@ -24,9 +21,11 @@ export const CartList = () => {
         </div>
       ) : (
         <div className="space-y-3">
-          {cart.map(item => <CartItem key={item.product.id} cartItem={item} />)}
+          {cart.map(item => (
+            <CartItem key={item.product.id} cartItem={item} />
+          ))}
         </div>
       )}
     </section>
   );
-}
+};

@@ -1,11 +1,11 @@
-import { CartList } from "./components/cart/CartList";
-import { CouponSelectBox } from "./components/coupon/CouponSelectBox";
-import { PaymentInfoBox } from "./components/payment/PaymentInfoBox";
-import { ProductList } from "./components/products/ProductList";
-import { useCart } from "../shared/hooks/useCart";
+import { CartList } from './components/cart/CartList';
+import { CouponSelectBox } from './components/coupon/CouponSelectBox';
+import { PaymentInfoBox } from './components/payment/PaymentInfoBox';
+import { ProductList } from './components/products/ProductList';
+import { useCart } from '../shared/hooks/useCart';
 
 export const UserPage = () => {
-  const { cart } = useCart(); 
+  const { cart } = useCart();
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -13,7 +13,7 @@ export const UserPage = () => {
         {/* 상품 목록 */}
         <ProductList />
       </div>
-      
+
       <div className="lg:col-span-1">
         <div className="sticky top-24 space-y-4">
           <CartList />
@@ -27,5 +27,5 @@ export const UserPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

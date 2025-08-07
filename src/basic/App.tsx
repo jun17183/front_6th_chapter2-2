@@ -19,26 +19,26 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Notifications 
-        notificationActions={notificationActions}
-      />
+      <Notifications notificationActions={notificationActions} />
 
       <Header appState={appState} cartActions={cartActions} />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
-        {isAdmin 
-          ? <AdminPage 
-            productsActions={productsActions} 
+        {isAdmin ? (
+          <AdminPage
+            productsActions={productsActions}
             couponActions={couponActions}
-            notificationActions={notificationActions} 
-          /> 
-          : <UserPage 
+            notificationActions={notificationActions}
+          />
+        ) : (
+          <UserPage
             appState={appState}
-            productsActions={productsActions} 
+            productsActions={productsActions}
             couponActions={couponActions}
-            cartActions={cartActions} 
-            notificationActions={notificationActions} 
-          />}
+            cartActions={cartActions}
+            notificationActions={notificationActions}
+          />
+        )}
       </main>
     </div>
   );

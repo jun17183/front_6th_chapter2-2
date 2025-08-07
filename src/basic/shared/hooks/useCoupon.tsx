@@ -1,9 +1,9 @@
-import { useAppState } from "./useAppState";
-import { useNotification } from "./useNotification";
-import { Coupon } from "../types";
+import { useAppState } from './useAppState';
+import { useNotification } from './useNotification';
+import { Coupon } from '../types';
 
 export const useCoupon = (
-  appState: ReturnType<typeof useAppState>, 
+  appState: ReturnType<typeof useAppState>,
   notificationActions: ReturnType<typeof useNotification>
 ) => {
   const { coupons, setCoupons, selectedCoupon, setSelectedCoupon } = appState;
@@ -17,7 +17,7 @@ export const useCoupon = (
     }
     setCoupons(prev => [...prev, newCoupon]);
     addNotification('쿠폰이 추가되었습니다.', 'success');
-  }
+  };
 
   const deleteCoupon = (couponCode: string) => {
     setCoupons(prev => prev.filter(c => c.code !== couponCode));
@@ -25,13 +25,13 @@ export const useCoupon = (
       setSelectedCoupon(null);
     }
     addNotification('쿠폰이 삭제되었습니다.', 'success');
-  }
+  };
 
   return {
     coupons,
     selectedCoupon,
     setSelectedCoupon,
     addCoupon,
-    deleteCoupon
-  }
-}
+    deleteCoupon,
+  };
+};

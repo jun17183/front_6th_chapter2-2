@@ -1,13 +1,13 @@
-import { Product } from "../../../shared/types";
-import { initialProductForm } from "../../../shared/constants";
-import { ProductDiscountItem } from "./ProductDiscountItem";
-import { useProducts } from "../../../shared/hooks/useProducts";
-import { useNotification } from "../../../shared/hooks/useNotification";
+import { Product } from '../../../shared/types';
+import { initialProductForm } from '../../../shared/constants';
+import { ProductDiscountItem } from './ProductDiscountItem';
+import { useProducts } from '../../../shared/hooks/useProducts';
+import { useNotification } from '../../../shared/hooks/useNotification';
 
 export const ProductForm = ({
   setShowProductForm,
   productForm,
-  setProductForm
+  setProductForm,
 }: {
   setShowProductForm: (show: boolean) => void;
   productForm: Product;
@@ -39,7 +39,10 @@ export const ProductForm = ({
   const changePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === '' || /^\d+$/.test(value)) {
-      setProductForm({ ...productForm, price: value === '' ? 0 : parseInt(value) });
+      setProductForm({
+        ...productForm,
+        price: value === '' ? 0 : parseInt(value),
+      });
     }
   };
 
@@ -58,9 +61,12 @@ export const ProductForm = ({
   const changeStock = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === '' || /^\d+$/.test(value)) {
-      setProductForm({ ...productForm, stock: value === '' ? 0 : parseInt(value) });
+      setProductForm({
+        ...productForm,
+        stock: value === '' ? 0 : parseInt(value),
+      });
     }
-  }
+  };
 
   // 재고 포커스 아웃
   const handleStockBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -80,7 +86,7 @@ export const ProductForm = ({
   const addDiscount = () => {
     setProductForm({
       ...productForm,
-      discounts: [...productForm.discounts, { quantity: 10, rate: 0.1 }]
+      discounts: [...productForm.discounts, { quantity: 10, rate: 0.1 }],
     });
   };
 
@@ -88,10 +94,10 @@ export const ProductForm = ({
   const removeDiscount = (index: number) => {
     setProductForm({
       ...productForm,
-      discounts: productForm.discounts.filter((_, i) => i !== index)
+      discounts: productForm.discounts.filter((_, i) => i !== index),
     });
   };
-  
+
   // 할인 퍼센트 변경
   const changeDiscountRate = (index: number, percent: number) => {
     const newDiscounts = [...productForm.discounts];
@@ -116,7 +122,9 @@ export const ProductForm = ({
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {/* 상품명 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">상품명</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              상품명
+            </label>
             <input
               name="name"
               type="text"
@@ -129,7 +137,9 @@ export const ProductForm = ({
 
           {/* 설명 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">설명</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              설명
+            </label>
             <input
               name="description"
               type="text"
@@ -141,7 +151,9 @@ export const ProductForm = ({
 
           {/* 가격 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">가격</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              가격
+            </label>
             <input
               name="price"
               type="text"
@@ -156,7 +168,9 @@ export const ProductForm = ({
 
           {/* 재고 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">재고</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              재고
+            </label>
             <input
               name="stock"
               type="text"
@@ -172,7 +186,9 @@ export const ProductForm = ({
 
         {/* 할인 정책 */}
         <div className="mt-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">할인 정책</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            할인 정책
+          </label>
           <div className="space-y-2">
             {productForm.discounts.map((discount, index) => (
               <ProductDiscountItem
@@ -216,4 +232,4 @@ export const ProductForm = ({
       </form>
     </div>
   );
-}
+};

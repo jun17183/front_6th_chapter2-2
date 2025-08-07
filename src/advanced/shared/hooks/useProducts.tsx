@@ -1,8 +1,8 @@
-import { Product } from "../types";
-import { useAtom } from "jotai";
-import { productsAtom } from "../../store/atoms/productsAtom";
-import { ADD_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT } from "../constants";
-import { useNotification } from "./useNotification";
+import { Product } from '../types';
+import { useAtom } from 'jotai';
+import { productsAtom } from '../../store/atoms/productsAtom';
+import { ADD_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT } from '../constants';
+import { useNotification } from './useNotification';
 
 export const useProducts = () => {
   const [products, dispatch] = useAtom(productsAtom);
@@ -18,7 +18,7 @@ export const useProducts = () => {
   const updateProduct = (updateProduct: Partial<Product>) => {
     dispatch({ type: UPDATE_PRODUCT, payload: { product: updateProduct } });
     addNotification('상품이 수정되었습니다.', 'success');
-  }
+  };
 
   // 상품 삭제
   const deleteProduct = (productId: string) => {
@@ -29,13 +29,13 @@ export const useProducts = () => {
   // 상품 조회
   const getProduct = (productId: string) => {
     return products.find(product => product.id === productId) || null;
-  }
+  };
 
-  return {  
+  return {
     products,
     addProduct,
     deleteProduct,
     updateProduct,
-    getProduct
+    getProduct,
   };
-}
+};

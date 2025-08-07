@@ -1,12 +1,16 @@
-import { useState } from "react";
-import { NotificationActions, Product, ProductsActions } from "../../shared/types";
-import { ProductList } from "../components/products/ProductList";
-import { ProductForm } from "../components/products/ProductForm";
-import { initialProductForm } from "../../shared/constants";
+import { useState } from 'react';
+import {
+  NotificationActions,
+  Product,
+  ProductsActions,
+} from '../../shared/types';
+import { ProductList } from '../components/products/ProductList';
+import { ProductForm } from '../components/products/ProductForm';
+import { initialProductForm } from '../../shared/constants';
 
-export const AdminProducts = ( {
+export const AdminProducts = ({
   productsActions,
-  notificationActions
+  notificationActions,
 }: {
   productsActions: ProductsActions;
   notificationActions: NotificationActions;
@@ -33,17 +37,20 @@ export const AdminProducts = ( {
         </div>
       </div>
 
-      <ProductList productsActions={productsActions} startEditProduct={startEditProduct} />
-      
+      <ProductList
+        productsActions={productsActions}
+        startEditProduct={startEditProduct}
+      />
+
       {showProductForm && (
-        <ProductForm 
-          productsActions={productsActions} 
-          notificationActions={notificationActions} 
-          setShowProductForm={setShowProductForm} 
+        <ProductForm
+          productsActions={productsActions}
+          notificationActions={notificationActions}
+          setShowProductForm={setShowProductForm}
           productForm={productForm}
           setProductForm={setProductForm}
         />
       )}
     </section>
-  )
-}
+  );
+};

@@ -1,18 +1,25 @@
-import { initialCouponForm } from "../../../shared/constants";
-import { Coupon, CouponActions, DISCOUNT_TYPE_AMOUNT, DISCOUNT_TYPE_PERCENTAGE, DiscountType, NotificationActions } from "../../../shared/types";
+import { initialCouponForm } from '../../../shared/constants';
+import {
+  Coupon,
+  CouponActions,
+  DISCOUNT_TYPE_AMOUNT,
+  DISCOUNT_TYPE_PERCENTAGE,
+  DiscountType,
+  NotificationActions,
+} from '../../../shared/types';
 
 export const CouponForm = ({
   couponActions,
   notificationActions,
   setShowCouponForm,
   couponForm,
-  setCouponForm
+  setCouponForm,
 }: {
   couponActions: CouponActions;
-  notificationActions: NotificationActions; 
+  notificationActions: NotificationActions;
   setShowCouponForm: (show: boolean) => void;
   couponForm: Coupon;
-  setCouponForm: (coupon: Coupon) => void;  
+  setCouponForm: (coupon: Coupon) => void;
 }) => {
   const { addCoupon } = couponActions;
   const { addNotification } = notificationActions;
@@ -40,13 +47,19 @@ export const CouponForm = ({
   const changeDiscountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === '' || /^\d+$/.test(value)) {
-      setCouponForm({ ...couponForm, discountValue: value === '' ? 0 : parseInt(value) });
+      setCouponForm({
+        ...couponForm,
+        discountValue: value === '' ? 0 : parseInt(value),
+      });
     }
   };
 
   // 할인 타입 변경
   const changeDiscountType = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCouponForm({ ...couponForm, discountType: e.target.value as DiscountType });
+    setCouponForm({
+      ...couponForm,
+      discountType: e.target.value as DiscountType,
+    });
   };
 
   // 할인 금액 포커스 아웃
@@ -76,7 +89,9 @@ export const CouponForm = ({
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {/* 쿠폰명 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">쿠폰명</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              쿠폰명
+            </label>
             <input
               name="name"
               type="text"
@@ -90,7 +105,9 @@ export const CouponForm = ({
 
           {/* 쿠폰 코드 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">쿠폰 코드</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              쿠폰 코드
+            </label>
             <input
               name="code"
               type="text"
@@ -104,7 +121,9 @@ export const CouponForm = ({
 
           {/* 할인 타입 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">할인 타입</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              할인 타입
+            </label>
             <select
               name="discountType"
               value={couponForm.discountType}
@@ -119,16 +138,22 @@ export const CouponForm = ({
           {/* 할인 금액 */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              {couponForm.discountType === DISCOUNT_TYPE_AMOUNT ? '할인 금액' : '할인율(%)'}
+              {couponForm.discountType === DISCOUNT_TYPE_AMOUNT
+                ? '할인 금액'
+                : '할인율(%)'}
             </label>
             <input
               name="discountValue"
               type="text"
-              value={couponForm.discountValue === 0 ? '' : couponForm.discountValue}
+              value={
+                couponForm.discountValue === 0 ? '' : couponForm.discountValue
+              }
               onChange={changeDiscountValue}
               onBlur={handleDiscountValueBlur}
               className="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-3 py-2 border text-sm"
-              placeholder={couponForm.discountType === DISCOUNT_TYPE_AMOUNT ? '5000' : '10'}
+              placeholder={
+                couponForm.discountType === DISCOUNT_TYPE_AMOUNT ? '5000' : '10'
+              }
               required
             />
           </div>
@@ -153,4 +178,4 @@ export const CouponForm = ({
       </form>
     </div>
   );
-}
+};

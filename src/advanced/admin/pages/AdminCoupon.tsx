@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Coupon } from "../../shared/types";
-import { CouponItem } from "../components/coupon/CouponItem";
-import { initialCouponForm } from "../../shared/constants";
-import { CouponForm } from "../components/coupon/CouponForm";
-import { useCoupon } from "../../shared/hooks/useCoupon";
+import { useState } from 'react';
+import { Coupon } from '../../shared/types';
+import { CouponItem } from '../components/coupon/CouponItem';
+import { initialCouponForm } from '../../shared/constants';
+import { CouponForm } from '../components/coupon/CouponForm';
+import { useCoupon } from '../../shared/hooks/useCoupon';
 
 export const AdminCoupon = () => {
   const { coupons, deleteCoupon } = useCoupon();
@@ -19,7 +19,11 @@ export const AdminCoupon = () => {
       <div className="p-6">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {coupons.map(coupon => (
-            <CouponItem key={coupon.code} coupon={coupon} deleteCoupon={deleteCoupon} />
+            <CouponItem
+              key={coupon.code}
+              coupon={coupon}
+              deleteCoupon={deleteCoupon}
+            />
           ))}
 
           {/* 새 쿠폰 추가 */}
@@ -28,8 +32,18 @@ export const AdminCoupon = () => {
               onClick={() => setShowCouponForm(!showCouponForm)}
               className="text-gray-400 hover:text-gray-600 flex flex-col items-center"
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 4v16m8-8H4"
+                />
               </svg>
               <p className="mt-2 text-sm font-medium">새 쿠폰 추가</p>
             </button>
@@ -45,5 +59,5 @@ export const AdminCoupon = () => {
         )}
       </div>
     </section>
-  )
-}
+  );
+};

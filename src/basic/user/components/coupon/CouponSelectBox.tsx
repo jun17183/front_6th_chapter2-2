@@ -1,8 +1,8 @@
-import { CartActions, CouponActions } from "../../../shared/types";
+import { CartActions, CouponActions } from '../../../shared/types';
 
 export const CouponSelectBox = ({
   couponActions,
-  cartActions
+  cartActions,
 }: {
   couponActions: CouponActions;
   cartActions: CartActions;
@@ -19,10 +19,10 @@ export const CouponSelectBox = ({
         </button>
       </div>
       {coupons.length > 0 && (
-        <select 
+        <select
           className="w-full text-sm border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
           value={selectedCoupon?.code || ''}
-          onChange={(e) => {
+          onChange={e => {
             const coupon = coupons.find(c => c.code === e.target.value);
             if (coupon) applyCoupon(coupon);
             else setSelectedCoupon(null);
@@ -31,13 +31,15 @@ export const CouponSelectBox = ({
           <option value="">쿠폰 선택</option>
           {coupons.map(coupon => (
             <option key={coupon.code} value={coupon.code}>
-              {coupon.name} ({coupon.discountType === 'amount' 
-                ? `${coupon.discountValue.toLocaleString()}원` 
-                : `${coupon.discountValue}%`})
+              {coupon.name} (
+              {coupon.discountType === 'amount'
+                ? `${coupon.discountValue.toLocaleString()}원`
+                : `${coupon.discountValue}%`}
+              )
             </option>
           ))}
         </select>
       )}
     </section>
   );
-}
+};

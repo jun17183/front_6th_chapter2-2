@@ -1,13 +1,19 @@
-import { useState } from "react";
-import { ActiveTab, ProductsActions, CouponActions, NotificationActions, ACTIVE_TAB_PRODUCTS } from "../shared/types";
-import { Header } from "./components/Header";
-import { AdminProducts } from "./pages/AdminProducts";
-import { AdminCoupon } from "./pages/AdminCoupon";
+import { useState } from 'react';
+import {
+  ActiveTab,
+  ProductsActions,
+  CouponActions,
+  NotificationActions,
+  ACTIVE_TAB_PRODUCTS,
+} from '../shared/types';
+import { Header } from './components/Header';
+import { AdminProducts } from './pages/AdminProducts';
+import { AdminCoupon } from './pages/AdminCoupon';
 
 export const AdminPage = ({
   productsActions,
   couponActions,
-  notificationActions
+  notificationActions,
 }: {
   productsActions: ProductsActions;
   couponActions: CouponActions;
@@ -19,15 +25,17 @@ export const AdminPage = ({
     <div className="max-w-6xl mx-auto">
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {activeTab === ACTIVE_TAB_PRODUCTS 
-      ? <AdminProducts 
-        productsActions={productsActions} 
-        notificationActions={notificationActions}
-      /> 
-      : <AdminCoupon 
-        couponActions={couponActions}
-        notificationActions={notificationActions}
-      />}
+      {activeTab === ACTIVE_TAB_PRODUCTS ? (
+        <AdminProducts
+          productsActions={productsActions}
+          notificationActions={notificationActions}
+        />
+      ) : (
+        <AdminCoupon
+          couponActions={couponActions}
+          notificationActions={notificationActions}
+        />
+      )}
     </div>
-  )
-}
+  );
+};

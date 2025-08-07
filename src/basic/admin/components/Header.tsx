@@ -1,8 +1,12 @@
-import { ACTIVE_TAB_COUPONS, ACTIVE_TAB_PRODUCTS, ActiveTab } from "../../shared/types";
+import {
+  ACTIVE_TAB_COUPONS,
+  ACTIVE_TAB_PRODUCTS,
+  ActiveTab,
+} from '../../shared/types';
 
 export const Header = ({
   activeTab,
-  setActiveTab
+  setActiveTab,
 }: {
   activeTab: ActiveTab;
   setActiveTab: (tab: ActiveTab) => void;
@@ -15,21 +19,21 @@ export const Header = ({
       </div>
       <div className="border-b border-gray-200 mb-6">
         <nav className="-mb-px flex space-x-8">
-          <button 
+          <button
             onClick={() => setActiveTab(ACTIVE_TAB_PRODUCTS)}
             className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
-              activeTab === ACTIVE_TAB_PRODUCTS 
-                ? 'border-gray-900 text-gray-900' 
+              activeTab === ACTIVE_TAB_PRODUCTS
+                ? 'border-gray-900 text-gray-900'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
             상품 관리
           </button>
-          <button 
+          <button
             onClick={() => setActiveTab(ACTIVE_TAB_COUPONS)}
             className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
-              activeTab === ACTIVE_TAB_COUPONS 
-                ? 'border-gray-900 text-gray-900' 
+              activeTab === ACTIVE_TAB_COUPONS
+                ? 'border-gray-900 text-gray-900'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -39,4 +43,4 @@ export const Header = ({
       </div>
     </>
   );
-}
+};

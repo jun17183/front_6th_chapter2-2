@@ -1,9 +1,9 @@
-import { useAppState } from "./useAppState";
-import { useNotification } from "./useNotification";
-import { Product } from "../types";
+import { useAppState } from './useAppState';
+import { useNotification } from './useNotification';
+import { Product } from '../types';
 
 export const useProducts = (
-  appState: ReturnType<typeof useAppState>, 
+  appState: ReturnType<typeof useAppState>,
   notificationActions: ReturnType<typeof useNotification>
 ) => {
   const { products, setProducts } = appState;
@@ -11,10 +11,13 @@ export const useProducts = (
 
   // 상품 추가
   const addProduct = (product: Omit<Product, 'id'>) => {
-    setProducts(prev => [...prev, {
-      ...product,
-      id: `p${Date.now()}`
-    }]);
+    setProducts(prev => [
+      ...prev,
+      {
+        ...product,
+        id: `p${Date.now()}`,
+      },
+    ]);
     addNotification('상품이 추가되었습니다.', 'success');
   };
 
@@ -28,7 +31,7 @@ export const useProducts = (
       )
     );
     addNotification('상품이 수정되었습니다.', 'success');
-  }
+  };
 
   // 상품 삭제
   const deleteProduct = (productId: string) => {
@@ -39,13 +42,13 @@ export const useProducts = (
   // 상품 조회
   const getProduct = (productId: string) => {
     return products.find(product => product.id === productId);
-  }
+  };
 
-  return {  
+  return {
     products,
     addProduct,
     deleteProduct,
     updateProduct,
-    getProduct
+    getProduct,
   };
-}
+};

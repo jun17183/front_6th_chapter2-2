@@ -1,5 +1,3 @@
 export const PlusIcon = () => {
-  return (
-    <span className="text-xs">+</span>
-  );
-}
+  return <span className="text-xs">+</span>;
+};

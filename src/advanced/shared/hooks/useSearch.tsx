@@ -1,10 +1,15 @@
-import { useAtom } from "jotai";
-import { debouncedSearchTermAtom, searchTermAtom } from "../../store/atoms/appAtom";
-import { useEffect } from "react";
+import { useAtom } from 'jotai';
+import {
+  debouncedSearchTermAtom,
+  searchTermAtom,
+} from '../../store/atoms/appAtom';
+import { useEffect } from 'react';
 
 export const useSearch = () => {
   const [searchTerm, setSearchTerm] = useAtom(searchTermAtom);
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useAtom(debouncedSearchTermAtom);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useAtom(
+    debouncedSearchTermAtom
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -13,5 +18,10 @@ export const useSearch = () => {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  return { searchTerm, setSearchTerm, debouncedSearchTerm, setDebouncedSearchTerm };
-}
+  return {
+    searchTerm,
+    setSearchTerm,
+    debouncedSearchTerm,
+    setDebouncedSearchTerm,
+  };
+};

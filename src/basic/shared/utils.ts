@@ -1,14 +1,14 @@
 export const formatAdminPrice = (price: number): string => {
   return `${price.toLocaleString()}원`;
-}
+};
 
 export const formatUserPrice = (price: number): string => {
   return `₩${price.toLocaleString()}`;
-}
+};
 
 export const getRemainingStock = (stock: number, quantity?: number): number => {
   return stock - (quantity || 0);
-}
+};
 
 /*
 const formatPrice = (price: number, productId?: string): string => {

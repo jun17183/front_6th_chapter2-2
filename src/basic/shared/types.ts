@@ -1,8 +1,8 @@
-import { useCart } from "./hooks/useCart";
-import { useCoupon } from "./hooks/useCoupon";
-import { useProducts } from "./hooks/useProducts";
-import { useAppState } from "./hooks/useAppState";
-import { useNotification } from "./hooks/useNotification";
+import { useCart } from './hooks/useCart';
+import { useCoupon } from './hooks/useCoupon';
+import { useProducts } from './hooks/useProducts';
+import { useAppState } from './hooks/useAppState';
+import { useNotification } from './hooks/useNotification';
 
 export interface Product {
   id: string;
@@ -53,5 +53,10 @@ export const NOTIFICATION_TYPE_SUCCESS = 'success';
 export const NOTIFICATION_TYPE_WARNING = 'warning';
 
 export type ActiveTab = typeof ACTIVE_TAB_PRODUCTS | typeof ACTIVE_TAB_COUPONS;
-export type DiscountType = typeof DISCOUNT_TYPE_AMOUNT | typeof DISCOUNT_TYPE_PERCENTAGE;
-export type NotificationType = typeof NOTIFICATION_TYPE_ERROR | typeof NOTIFICATION_TYPE_SUCCESS | typeof NOTIFICATION_TYPE_WARNING;
+export type DiscountType =
+  | typeof DISCOUNT_TYPE_AMOUNT
+  | typeof DISCOUNT_TYPE_PERCENTAGE;
+export type NotificationType =
+  | typeof NOTIFICATION_TYPE_ERROR
+  | typeof NOTIFICATION_TYPE_SUCCESS
+  | typeof NOTIFICATION_TYPE_WARNING;

@@ -1,11 +1,15 @@
-import { atomWithStorage } from "jotai/utils";
-import { Coupon } from "../../shared/types";
-import { atom } from "jotai";
-import { ADD_COUPON, DELETE_COUPON, initialCoupons } from "../../shared/constants";
+import { atomWithStorage } from 'jotai/utils';
+import { Coupon } from '../../shared/types';
+import { atom } from 'jotai';
+import {
+  ADD_COUPON,
+  DELETE_COUPON,
+  initialCoupons,
+} from '../../shared/constants';
 
-type CouponAction = 
-  | { type: typeof ADD_COUPON;     payload: { coupon: Coupon } }
-  | { type: typeof DELETE_COUPON;  payload: { couponCode: string } }
+type CouponAction =
+  | { type: typeof ADD_COUPON; payload: { coupon: Coupon } }
+  | { type: typeof DELETE_COUPON; payload: { couponCode: string } };
 
 const couponReducer = (state: Coupon[], action: CouponAction) => {
   switch (action.type) {
@@ -20,12 +24,12 @@ const couponReducer = (state: Coupon[], action: CouponAction) => {
     default:
       return state;
   }
-}
+};
 
 const couponsStorageAtom = atomWithStorage<Coupon[]>('coupons', initialCoupons);
 
 export const couponsAtom = atom(
-  (get) => get(couponsStorageAtom),
+  get => get(couponsStorageAtom),
   (get, set, action: CouponAction) => {
     const newState = couponReducer(get(couponsStorageAtom), action);
     set(couponsStorageAtom, newState);

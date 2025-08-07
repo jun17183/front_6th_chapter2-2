@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { CartItem, Coupon, Product } from "../types";
-import { initialCoupons, initialProducts } from "../constants";
+import { useState } from 'react';
+import { CartItem, Coupon, Product } from '../types';
+import { initialCoupons, initialProducts } from '../constants';
 
 export const useAppState = () => {
   const [products, setProductsState] = useState<Product[]>(() => {
@@ -14,9 +14,12 @@ export const useAppState = () => {
     }
     return initialProducts;
   });
-  
-  const setProducts = (newProducts: Product[] | ((prev: Product[]) => Product[])) => {
-    const updatedProducts = typeof newProducts === 'function' ? newProducts(products) : newProducts;
+
+  const setProducts = (
+    newProducts: Product[] | ((prev: Product[]) => Product[])
+  ) => {
+    const updatedProducts =
+      typeof newProducts === 'function' ? newProducts(products) : newProducts;
     setProductsState(updatedProducts);
     localStorage.setItem('products', JSON.stringify(updatedProducts));
   };
@@ -32,8 +35,10 @@ export const useAppState = () => {
     }
     return [];
   });
-  
-  const setCart = (newCart: CartItem[] | ((prev: CartItem[]) => CartItem[])) => {
+
+  const setCart = (
+    newCart: CartItem[] | ((prev: CartItem[]) => CartItem[])
+  ) => {
     const updatedCart = typeof newCart === 'function' ? newCart(cart) : newCart;
     setCartState(updatedCart);
 
@@ -42,7 +47,7 @@ export const useAppState = () => {
     } else {
       localStorage.setItem('cart', JSON.stringify(updatedCart));
     }
-  }
+  };
 
   const [coupons, setCouponsState] = useState<Coupon[]>(() => {
     const saved = localStorage.getItem('coupons');
@@ -56,11 +61,14 @@ export const useAppState = () => {
     return initialCoupons;
   });
 
-  const setCoupons = (newCoupons: Coupon[] | ((prev: Coupon[]) => Coupon[])) => {
-    const updatedCoupons = typeof newCoupons === 'function' ? newCoupons(coupons) : newCoupons;
+  const setCoupons = (
+    newCoupons: Coupon[] | ((prev: Coupon[]) => Coupon[])
+  ) => {
+    const updatedCoupons =
+      typeof newCoupons === 'function' ? newCoupons(coupons) : newCoupons;
     setCouponsState(updatedCoupons);
     localStorage.setItem('coupons', JSON.stringify(updatedCoupons));
-  }
+  };
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [selectedCoupon, setSelectedCoupon] = useState<Coupon | null>(null);
@@ -68,12 +76,19 @@ export const useAppState = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
 
   return {
-    products, setProducts,
-    cart, setCart,
-    isAdmin, setIsAdmin,
-    coupons, setCoupons,
-    selectedCoupon, setSelectedCoupon,
-    searchTerm, setSearchTerm,
-    debouncedSearchTerm, setDebouncedSearchTerm,
+    products,
+    setProducts,
+    cart,
+    setCart,
+    isAdmin,
+    setIsAdmin,
+    coupons,
+    setCoupons,
+    selectedCoupon,
+    setSelectedCoupon,
+    searchTerm,
+    setSearchTerm,
+    debouncedSearchTerm,
+    setDebouncedSearchTerm,
   };
 };

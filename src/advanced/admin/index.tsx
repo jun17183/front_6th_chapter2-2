@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { ActiveTab, ACTIVE_TAB_PRODUCTS } from "../shared/types";
-import { Title } from "./components/Title";
-import { AdminProducts } from "./pages/AdminProducts";
-import { AdminCoupon } from "./pages/AdminCoupon";
+import { useState } from 'react';
+import { ActiveTab, ACTIVE_TAB_PRODUCTS } from '../shared/types';
+import { Title } from './components/Title';
+import { AdminProducts } from './pages/AdminProducts';
+import { AdminCoupon } from './pages/AdminCoupon';
 
 export const AdminPage = () => {
   const [activeTab, setActiveTab] = useState<ActiveTab>(ACTIVE_TAB_PRODUCTS);
@@ -13,5 +13,5 @@ export const AdminPage = () => {
 
       {activeTab === ACTIVE_TAB_PRODUCTS ? <AdminProducts /> : <AdminCoupon />}
     </div>
-  )
-}
+  );
+};

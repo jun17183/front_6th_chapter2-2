@@ -1,4 +1,4 @@
-import { Coupon, DISCOUNT_TYPE_AMOUNT, Product } from "./types";
+import { Coupon, DISCOUNT_TYPE_AMOUNT, Product } from './types';
 
 export const initialProductForm: Product = {
   id: '',
@@ -6,15 +6,15 @@ export const initialProductForm: Product = {
   price: 0,
   stock: 0,
   description: '',
-  discounts: []
-}
+  discounts: [],
+};
 
 export const initialCouponForm: Coupon = {
   name: '',
   code: '',
   discountType: DISCOUNT_TYPE_AMOUNT,
-  discountValue: 0
-}
+  discountValue: 0,
+};
 
 export const initialProducts: Product[] = [
   {
@@ -24,20 +24,18 @@ export const initialProducts: Product[] = [
     stock: 20,
     discounts: [
       { quantity: 10, rate: 0.1 },
-      { quantity: 20, rate: 0.2 }
+      { quantity: 20, rate: 0.2 },
     ],
-    description: '최고급 품질의 프리미엄 상품입니다.'
+    description: '최고급 품질의 프리미엄 상품입니다.',
   },
   {
     id: 'p2',
     name: '상품2',
     price: 20000,
     stock: 20,
-    discounts: [
-      { quantity: 10, rate: 0.15 }
-    ],
+    discounts: [{ quantity: 10, rate: 0.15 }],
     description: '다양한 기능을 갖춘 실용적인 상품입니다.',
-    isRecommended: true
+    isRecommended: true,
   },
   {
     id: 'p3',
@@ -46,10 +44,10 @@ export const initialProducts: Product[] = [
     stock: 20,
     discounts: [
       { quantity: 10, rate: 0.2 },
-      { quantity: 30, rate: 0.25 }
+      { quantity: 30, rate: 0.25 },
     ],
-    description: '대용량과 고성능을 자랑하는 상품입니다.'
-  }
+    description: '대용량과 고성능을 자랑하는 상품입니다.',
+  },
 ];
 
 export const initialCoupons: Coupon[] = [
@@ -57,14 +55,14 @@ export const initialCoupons: Coupon[] = [
     name: '5000원 할인',
     code: 'AMOUNT5000',
     discountType: 'amount',
-    discountValue: 5000
+    discountValue: 5000,
   },
   {
     name: '10% 할인',
     code: 'PERCENT10',
     discountType: 'percentage',
-    discountValue: 10
-  }
+    discountValue: 10,
+  },
 ];
 
 // 상품 액션 타입
