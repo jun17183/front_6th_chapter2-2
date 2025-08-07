@@ -14,7 +14,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "deploy": "gh-pages -d dist",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "test:basic": "vitest src/basic",
+    "test:advanced": "vitest src/advanced",
   },
   "dependencies": {
     "gh-pages": "^6.3.0",
